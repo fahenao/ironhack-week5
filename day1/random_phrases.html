@@ -1,0 +1,70 @@
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>Random Phrases</title>
+		<style>
+		.randomB {
+			margin-left: 2%;
+		}
+		.random_container{
+			border: 2px solid black;
+			min-height: 200px;
+			max-width: 400px;
+			background-color: #aaa;
+			margin-left: 2%;
+		}
+		.wrapper {
+			background-color: #ddd;
+			width: 500px;
+		}
+		.phrases{
+			padding-left: 5%;
+		}
+		.new_phrase {
+			border-radius: 5px;
+			margin-top: 2%;
+			margin-bottom: 2%;
+			margin-left: 2%;
+		}
+		</style>
+	</head>
+	<body>
+		<div class="wrapper">
+			<div class="random_container">
+				<p class="phrases">Phrase</p>
+				<button class="randomB">Random Phrase</button>
+			</div>
+
+			<form>
+				<input type="text" name="name" class="new_phrase">
+			</form>
+
+		</div>
+
+		<script src="http://code.jquery.com/jquery-1.11.3.min.js"> </script>
+		<script type="text/javascript">
+
+			var phrases = [
+			"Todas mienten",
+			"Mueve tu body",
+			"Tampoco te mates mucho",
+			"Quien espera desespera"
+			];
+
+			
+			$('.randomB').on('click', function(event) {
+				event.preventDefault();
+				var randomNumber = Math.floor((Math.random() * phrases.length));
+				var phrase = phrases[randomNumber]
+				$('.phrases').html(phrase)
+			});
+
+			$('form').on('submit', function(event) {
+				event.preventDefault();
+				var input = $("[name='name']").val();
+				phrases.push(input);
+				}); 
+
+		</script>
+	</body>
+</html>

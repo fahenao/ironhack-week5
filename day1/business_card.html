@@ -41,7 +41,7 @@
     position: relative;
     }
     .right-align {
-    float: right;
+    float: right;º
     }
     .heading p {
     text-align: center;
@@ -58,6 +58,9 @@
     }
     .yellow {
     background-color: #F5FF8D;
+    }
+    .cool{
+      border: 1px solid green;
     }
     </style>
   </head>
@@ -86,6 +89,9 @@
         </ul>
       </div>
     </div>
+
+    <button class="fadeout_button">fade out</button>
+
     <script src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
     <script>
     (function() {
@@ -101,7 +107,7 @@
     $('#phone').html(yourPhone);
     });
     $('button.blue').on('click', function(event) {
-    event.preventDefault()
+     event.preventDefault()
     $('.biz-card').removeClass('yellow')
     
     $('.biz-card').toggleClass('blue');
@@ -111,6 +117,21 @@
     $('.biz-card').removeClass('blue')
     $('.biz-card').toggleClass('yellow');
     });
+
+    $('input[name=name]').on('input', function(event) {
+      var input = $(event.target)
+
+      if (input.val().kength > 3) {
+        input.toggleClass('cool', true)
+      }else {
+        input.toggleClass('cool', false)
+      }
+    })
+
+    $('.fadeout_button').on('click', function(event) {
+      event.preventDefault()
+      $('body').fadeOut()
+    })
     })()
     </script>
   </body>
