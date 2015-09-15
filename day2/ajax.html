@@ -1,0 +1,50 @@
+<html>
+  <head>
+    <style type="text/css" media="all">
+    
+    </style>
+  </head>
+  <body>
+
+    <form>
+      <input type="text" name="name" placeholder="name">
+      <input type="text" name="occupation" placeholder="occupation">
+      <input type="text" name="weapon" placeholder="weapon">
+      <input type="submit" value="submit">
+    </form>
+
+    <ul id="characters">
+      
+    </ul>
+    <script src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
+    <script type="text/javascript" charset="utf-8">
+
+      $('.characterlist')
+
+      $( "form" ).on( "submit", function( event ) {
+        event.preventDefault();
+        var data = $('form').serializeArray();
+        console.log(data);
+        var newCharacter = {
+          name: data[0].value,
+          occupation: data[1].value,
+          weapon: data[2].value 
+        }
+
+        var request = $.post('http://ironhack-characters.herokuapp.com/characters', newCharacter);
+      });
+    
+    function handleCharacters(characters) {
+      characters.forEach(function(c){
+        $('#characters').append('<li>' + c.name +  '</li>')
+      })
+    }
+
+
+    var request = $.get('http://ironhack-characters.herokuapp.com/characters');
+    request.done(handleCharacters);
+
+
+    </script>
+  </body>
+</html>
